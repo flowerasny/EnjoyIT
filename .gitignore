@@ -1,2 +1,7 @@
-EnjoyIT-API\EnjoyIT-API\bin
-EnjoyIT-API\EnjoyIT-API\obj
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
+.vs
