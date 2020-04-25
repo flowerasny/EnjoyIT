@@ -1,9 +1,0 @@
-C:\Users\Mariusz\Desktop\UCZELNIA\Projekt\GIt\EnjoyIT\EnjoyIT-API\DataContext\bin\Debug\netcoreapp3.1\DataContext.deps.json
-C:\Users\Mariusz\Desktop\UCZELNIA\Projekt\GIt\EnjoyIT\EnjoyIT-API\DataContext\bin\Debug\netcoreapp3.1\DataContext.dll
-C:\Users\Mariusz\Desktop\UCZELNIA\Projekt\GIt\EnjoyIT\EnjoyIT-API\DataContext\obj\Debug\netcoreapp3.1\DataContext.AssemblyInfoInputs.cache
-C:\Users\Mariusz\Desktop\UCZELNIA\Projekt\GIt\EnjoyIT\EnjoyIT-API\DataContext\obj\Debug\netcoreapp3.1\DataContext.AssemblyInfo.cs
-C:\Users\Mariusz\Desktop\UCZELNIA\Projekt\GIt\EnjoyIT\EnjoyIT-API\DataContext\bin\Debug\netcoreapp3.1\DataContext.runtimeconfig.json
-C:\Users\Mariusz\Desktop\UCZELNIA\Projekt\GIt\EnjoyIT\EnjoyIT-API\DataContext\bin\Debug\netcoreapp3.1\DataContext.runtimeconfig.dev.json
-C:\Users\Mariusz\Desktop\UCZELNIA\Projekt\GIt\EnjoyIT\EnjoyIT-API\DataContext\bin\Debug\netcoreapp3.1\DataContext.pdb
-C:\Users\Mariusz\Desktop\UCZELNIA\Projekt\GIt\EnjoyIT\EnjoyIT-API\DataContext\obj\Debug\netcoreapp3.1\DataContext.dll
-C:\Users\Mariusz\Desktop\UCZELNIA\Projekt\GIt\EnjoyIT\EnjoyIT-API\DataContext\obj\Debug\netcoreapp3.1\DataContext.pdb

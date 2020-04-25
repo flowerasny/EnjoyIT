@@ -49,6 +49,41 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Items");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            description = "opis...",
+                            githubPage = "githubPage..",
+                            orginator = "orginator..",
+                            rate = 3,
+                            solutionPage = "solutionPage",
+                            status = (byte)1,
+                            title = "title.."
+                        },
+                        new
+                        {
+                            Id = 2,
+                            description = "opis...",
+                            githubPage = "githubPage..",
+                            orginator = "orginator..",
+                            rate = 3,
+                            solutionPage = "solutionPage",
+                            status = (byte)1,
+                            title = "title.."
+                        },
+                        new
+                        {
+                            Id = 3,
+                            description = "opis...",
+                            githubPage = "githubPage..",
+                            orginator = "orginator..",
+                            rate = 3,
+                            solutionPage = "solutionPage",
+                            status = (byte)1,
+                            title = "title.."
+                        });
                 });
 #pragma warning restore 612, 618
         }
