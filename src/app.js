@@ -52,7 +52,7 @@ new Vue({
             counter: 12
         },{
             status: "DONE",
-            title: "Aplikacja do zarządzania projektami studentów",
+            title: "Aplikacja ",
             counter: 1
         },{
             status: "DONE",
