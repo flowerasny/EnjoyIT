@@ -1,0 +1,21 @@
+
+.projectsContainer { 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+
+}
+
+.projectsList {
+  /* display: inline-table; */
+  /* margin-right: 50px; */
+}
+
+.projectsListTitle {  
+  color: #999999;
+  font-size: 24px;
+  margin-left: 26px;
+  font-weight: bold;
+}
