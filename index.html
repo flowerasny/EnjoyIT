@@ -2,10 +2,38 @@
 <html>
 
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="src/app.css">
+    <link rel="stylesheet" href="src/card.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <title>EnjoyIT</title>
 </head>
 
-<body>
-    
+<body class="appContainer">
+    <div id="app">
+        <project-card></project-card>
+    </div>
+
+    <script type="text/x-template" id="project-card-template">
+        <div class="card">
+            <div class="statusColorYellow"></div>
+            <span class="cardTitle">
+                Aplikacja do zarządzania projektami studentów do zarządzania projektami studentów do zarządzania projektami studentów
+            </span>
+            <div class="rateContainer">
+                <img src="assets/ic_like.png" class="rateImage">
+                <span class="ratesCounter">0</span>
+            </div>
+            <div class="cardButton">
+                <span class="cardButtonText">Contribute</span>
+            </div>
+        </div>
+    </script>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="src/app.js"></script>
 </body>
+
+</html>
