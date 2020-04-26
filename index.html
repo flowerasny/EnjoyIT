@@ -13,21 +13,30 @@
 
 <body class="appContainer">
     <div id="app">
-        <project-card></project-card>
+            <project-card
+                v-for="project in projects"
+                :status="project.status"
+                :title="project.title"
+                :counter="project.counter"
+            ></project-card>
     </div>
 
     <script type="text/x-template" id="project-card-template">
         <div class="card">
-            <div class="statusColorYellow"></div>
+            <div v-bind:class="[statusBarClass, statusClass]"></div>
             <span class="cardTitle">
-                Aplikacja do zarządzania projektami studentów do zarządzania projektami studentów do zarządzania projektami studentów
+                {{project.title}}
             </span>
             <div class="rateContainer">
                 <img src="assets/ic_like.png" class="rateImage">
-                <span class="ratesCounter">0</span>
+                <span class="ratesCounter">
+                    {{project.counter}}
+                </span>
             </div>
-            <div class="cardButton">
-                <span class="cardButtonText">Contribute</span>
+            <div v-bind:class="[cardButtonClass,statusClass]">
+                    <span v-if="project.status === 'DONE'" class="cardButtonText">Open</span>
+                    <span v-else-if="project.status === 'IN_PROGRESS'" class="cardButtonText">Show details</span>
+                    <span v-else-if="project.status === 'TODO'" class="cardButtonText">Contribute</span>
             </div>
         </div>
     </script>

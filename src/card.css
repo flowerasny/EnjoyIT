@@ -38,16 +38,15 @@
   width: 20px;
 }
 
-.statusColorYellow {
-  width: 22px;
+.statusBar {
+  max-width: 4px;
+  min-width: 4px;
   max-height: 100%;
-  background-color: #F1CB6A;
   border-radius: 45px;
 }
 
 .cardButton{
   flex-direction: column;
-  background: #F1CB6A;
   border-radius: 16px;
   padding-left: 24px;
   padding-right: 24px;
@@ -61,4 +60,16 @@
 .cardButtonText{
   color: #ffffff;
   font-size: 12px;
+}
+
+.statusDone {
+  background: #6EC95F;
+}
+
+.statusTodo {
+  background: #F1CB6A;
+}
+
+.statusInProgress {
+  background: #7EB2FF;
 }
