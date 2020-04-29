@@ -3,7 +3,6 @@
     <span class="projectsListTitle">{{ listTitle }}</span>
     <project-card
       v-for="project in projectsList"
-      :key="project"
       :status="project.status"
       :title="project.title"
       :counter="project.counter"

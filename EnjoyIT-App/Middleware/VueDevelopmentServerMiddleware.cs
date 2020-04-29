@@ -28,7 +28,6 @@ namespace VueSPATemplate.Middleware
                 throw new ArgumentException("Cannot be null or empty", nameof(npmScriptName));
             }
 
-            // Start Vue application and attach to middleware pipeline
             var appBuilder = spaBuilder.ApplicationBuilder;            
             var logger = LoggerFinder.GetOrCreateLogger(appBuilder, LogCategoryName);
             var portTask = StartVueDevServerAsync(sourcePath, npmScriptName, logger);

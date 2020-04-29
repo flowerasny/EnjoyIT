@@ -22,7 +22,7 @@ namespace VueSPATemplate
             services.AddControllersWithViews();
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/src";
+                configuration.RootPath = "ClientApp/dist";
             });
         }
 
@@ -41,15 +41,7 @@ namespace VueSPATemplate
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
             app.UseRouting();
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller}/{action=Index}/{id?}");
-            //});
 
             app.UseSpa(spa =>
             {
