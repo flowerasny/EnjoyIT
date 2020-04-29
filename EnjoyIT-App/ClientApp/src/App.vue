@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" class="appContainer">
         <div class="projectsContainer">
             <project-cards-list v-for="status in statuses"
                                 :key="status"
@@ -24,13 +24,91 @@
                         id: "1",
                         status: "IN_PROGRESS",
                         title:
-                            "Kalendarz UEk pozwalaj�cy wy�wietli� wydarzenia maj�ce miejsce na uczelni",
+                            "Kalendarz UEk pozwalający wyświetlić wydarzenia mające miejsce na uczelni",
                         counter: 32
                     },
                     {
                         id: "2",
+                        status: "IN_PROGRESS",
+                        title: "Aplikacja do zarządzania projektami studentów",
+                        counter: 12
+                    },
+                    {
+                        id: "3",
                         status: "DONE",
-                        title: "Aplikacja do zarz�dzania projektami student�w",
+                        title: "Super sprawny system rezerwacji sal",
+                        counter: 1
+                    },
+                    {
+                        id: "4",
+                        status: "TODO",
+                        title:
+                            "Inteligentna porównywarka kursów walut, która wychwytuje i podkreśla niespodziewane skoki i spadki cen",
+                        counter: 1241
+                    },
+                    {
+                        id: "5",
+                        status: "IN_PROGRESS",
+                        title:
+                            "Kalendarz UEk pozwalający wyświetlić wydarzenia mające miejsce na uczelni",
+                        counter: 32
+                    },
+                    {
+                        id: "6",
+                        status: "DONE",
+                        title: "Aplikacja do zarządzania projektami studentów",
+                        counter: 12
+                    },
+                    {
+                        id: "7",
+                        status: "IN_PROGRESS",
+                        title: "Super sprawny system rezerwacji sal",
+                        counter: 1
+                    },
+                    {
+                        id: "8",
+                        status: "TOIN_PROGRESSDO",
+                        title:
+                            "Inteligentna porównywarka kursów walut, która wychwytuje i podkreśla niespodziewane skoki i spadki cen",
+                        counter: 1241
+                    },
+                    {
+                        id: "9",
+                        status: "DONE",
+                        title:
+                            "Kalendarz UEk pozwalający wyświetlić wydarzenia mające miejsce na uczelni",
+                        counter: 32
+                    },
+                    {
+                        id: "10",
+                        status: "DONE",
+                        title: "Aplikacja do zarządzania projektami studentów",
+                        counter: 12
+                    },
+                    {
+                        id: "11",
+                        status: "TODO",
+                        title: "Super sprawny system rezerwacji sal",
+                        counter: 1
+                    },
+                    {
+                        id: "12",
+                        status: "DONE",
+                        title:
+                            "Inteligentna porównywarka kursów walut, która wychwytuje i podkreśla niespodziewane skoki i spadki cen",
+                        counter: 1241
+                    },
+                    {
+                        id: "13",
+                        status: "DONE",
+                        title:
+                            "Kalendarz UEk pozwalający wyświetlić wydarzenia mające miejsce na uczelni",
+                        counter: 32
+                    },
+                    {
+                        id: "14",
+                        status: "IN_PROGRESS",
+                        title: "Aplikacja do zarządzania projektami studentów",
                         counter: 12
                     },
                     {
@@ -40,10 +118,10 @@
                         counter: 1
                     },
                     {
-                        id: "4",
+                        id: "15",
                         status: "TODO",
                         title:
-                            "Inteligentna por�wnywarka kurs�w walut, kt�ra wychwytuje i podkre�la niespodziewane skoki i spadki cen",
+                            "Inteligentna porównywarka kursów walut, która wychwytuje i podkreśla niespodziewane skoki i spadki cen",
                         counter: 1241
                     }
                 ],
@@ -54,10 +132,6 @@
 </script>
 
 <style>
-    .appContainer {
-        background: rgb(238, 238, 238);
-    }
-
     .projectsContainer {
         display: flex;
         flex-direction: row;
