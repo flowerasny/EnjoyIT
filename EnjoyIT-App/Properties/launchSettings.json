@@ -2,10 +2,10 @@
   "profiles": {
     "EnjoyIT": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5050",
+      "launchBrowser": false,
+      "applicationUrl": "http://51.68.142.66:5050",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     }
   }

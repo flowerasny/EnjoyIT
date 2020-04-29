@@ -45,13 +45,13 @@ export default {
       title: this.title,
       rate: this.rate
     };
-    if (this.status === 3) {
+    
+    if (this.status === 3) 
       this.statusClass = "statusDone";
-    } else if (this.status === 2) {
+    else if (this.status === 2) 
       this.statusClass = "statusInProgress";
-    } else if (this.status === 1) {
+    else if (this.status === 1) 
       this.statusClass = "statusTodo";
-    }
   }
 };
 </script>

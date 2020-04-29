@@ -65,7 +65,7 @@ export default {
 <style scoped>
 .projectsListTitle {
   color: #999999;
-  font-size: 24px;
+  font-size: 25px;
   margin-left: 26px;
   font-weight: bold;
 }
