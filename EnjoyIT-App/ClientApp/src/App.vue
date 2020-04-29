@@ -5,13 +5,15 @@
                                 :key="status"
                                 :status="status"
                                 :projects="projects"></project-cards-list>
-        </div>
+        </div> 
     </div>
+  
 </template>
 
 <script>
     import ProjectCardsList from './components/ProjectCardsList'
-
+    import service from '@/helpers/service'
+    
     export default {
         name: "App",
         components: {
@@ -19,37 +21,12 @@
         },
         data: function () {
             return {
-                projects: [
-                    {
-                        id: "1",
-                        status: "IN_PROGRESS",
-                        title:
-                            "Kalendarz UEk pozwalaj¹cy wyœwietliæ wydarzenia maj¹ce miejsce na uczelni",
-                        counter: 32
-                    },
-                    {
-                        id: "2",
-                        status: "DONE",
-                        title: "Aplikacja do zarz¹dzania projektami studentów",
-                        counter: 12
-                    },
-                    {
-                        id: "3",
-                        status: "TODO",
-                        title: "Super sprawny system rezerwacji sal",
-                        counter: 1
-                    },
-                    {
-                        id: "4",
-                        status: "TODO",
-                        title:
-                            "Inteligentna porównywarka kursów walut, która wychwytuje i podkreœla niespodziewane skoki i spadki cen",
-                        counter: 1241
-                    }
-                ],
-                statuses: ["TODO", "IN_PROGRESS", "DONE"]
+                statuses: [1, 2, 3],
+                projects: []
+                    
             };
-        }
+        },beforeMount (){
+            service.getData().then(data => {this.projects = data})}                 
     };
 </script>
 

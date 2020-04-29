@@ -4,20 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataContext;
 using DataContext.Dtos;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace EnjoyITAPI.Controllers
 {
+    [EnableCors("CorsPolicy")]
     [ApiController]
-    [Route("api/values")]
+    [Route("api/data")]
     public class ValuesController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private DataBaseContext _context;
         private readonly ILogger<ValuesController> _logger;
 
@@ -32,7 +29,6 @@ namespace EnjoyITAPI.Controllers
         public IEnumerable<Item> Get()
         {
             return _context.Items.ToList();
-            //return Summaries;
         }
     }
 }

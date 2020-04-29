@@ -3,10 +3,12 @@
     <span class="projectsListTitle">{{ listTitle }}</span>
     <project-card
       v-for="project in projectsList"
+      :key="project.id"
       :status="project.status"
       :title="project.title"
-      :counter="project.counter"
+      :rate="project.rate"
     ></project-card>
+
   </div>
 </template>
 
@@ -20,7 +22,7 @@ export default {
   },
   props: {
     status: {
-      type: String,
+      type: Number,
       required: true
     },
     projects: {
@@ -40,11 +42,11 @@ export default {
         this.projectsList.push(project);
       }
     });
-    if (this.status === "DONE") {
+    if (this.status === 1) {
       this.listTitle = "Done";
-    } else if (this.status === "IN_PROGRESS") {
+    } else if (this.status === 2) {
       this.listTitle = "In progress";
-    } else if (this.status === "TODO") {
+    } else if (this.status === 3) {
       this.listTitle = "To do";
     }
   }

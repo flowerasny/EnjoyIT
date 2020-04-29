@@ -4,12 +4,12 @@
     <span class="cardTitle">{{project.title}}</span>
     <div class="rateContainer">
       <img src="../assets/ic_like.png" class="rateImage" />
-      <span class="ratesCounter">{{project.counter}}</span>
+      <span class="ratesCounter">{{project.rate}}</span>
     </div>
     <div v-bind:class="[cardButtonClass,statusClass]">
-      <span v-if="project.status === 'DONE'" class="cardButtonText">Open</span>
-      <span v-else-if="project.status === 'IN_PROGRESS'" class="cardButtonText">Show details</span>
-      <span v-else-if="project.status === 'TODO'" class="cardButtonText">Contribute</span>
+      <span v-if="project.status === 1" class="cardButtonText">Open</span>
+      <span v-else-if="project.status === 2" class="cardButtonText">Show details</span>
+      <span v-else-if="project.status === 3" class="cardButtonText">Contribute</span>
     </div>
   </div>
 </template>
@@ -19,14 +19,14 @@ export default {
   name: "ProjectCard",
   props: {
     status: {
-      type: String,
+      type: Number,
       required: true
     },
     title: {
       type: String,
       required: true
     },
-    counter: {
+    rate: {
       type: Number,
       required: true
     }
@@ -43,13 +43,13 @@ export default {
     this.project = {
       status: this.status,
       title: this.title,
-      counter: this.counter
+      rate: this.rate
     };
-    if (this.status === "DONE") {
+    if (this.status === 1) {
       this.statusClass = "statusDone";
-    } else if (this.status === "IN_PROGRESS") {
+    } else if (this.status === 2) {
       this.statusClass = "statusInProgress";
-    } else if (this.status === "TODO") {
+    } else if (this.status === 3) {
       this.statusClass = "statusTodo";
     }
   }

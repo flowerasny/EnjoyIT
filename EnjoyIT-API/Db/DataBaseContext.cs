@@ -5,10 +5,7 @@ namespace DataContext
 {
     public class DataBaseContext : DbContext
     {
-        public DataBaseContext(DbContextOptions options) : base(options)
-        {
-
-        }
+        public DataBaseContext(DbContextOptions options) : base(options){ }
 
         public DbSet<Item> Items { get; set; }
 
