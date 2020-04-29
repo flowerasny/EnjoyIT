@@ -7,9 +7,9 @@
       <span class="ratesCounter">{{project.rate}}</span>
     </div>
     <div v-bind:class="[cardButtonClass,statusClass]">
-      <span v-if="project.status === 1" class="cardButtonText">Open</span>
+      <span v-if="project.status === 3" class="cardButtonText">Open</span>
       <span v-else-if="project.status === 2" class="cardButtonText">Show details</span>
-      <span v-else-if="project.status === 3" class="cardButtonText">Contribute</span>
+      <span v-else-if="project.status === 1" class="cardButtonText">Contribute</span>
     </div>
   </div>
 </template>
@@ -45,11 +45,11 @@ export default {
       title: this.title,
       rate: this.rate
     };
-    if (this.status === 1) {
+    if (this.status === 3) {
       this.statusClass = "statusDone";
     } else if (this.status === 2) {
       this.statusClass = "statusInProgress";
-    } else if (this.status === 3) {
+    } else if (this.status === 1) {
       this.statusClass = "statusTodo";
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="projectsListContainer"> 
+  <div class="projectsListContainer">
     <span class="projectsListTitle">{{ listTitle }}</span>
     <project-card-add-new v-if="shouldShowAddNewCard"></project-card-add-new>
     <project-card
@@ -9,19 +9,18 @@
       :title="project.title"
       :rate="project.rate"
     ></project-card>
-
   </div>
 </template>
 
 <script>
-import ProjectCard from './ProjectCard'
-import ProjectCardAddNew from './ProjectCardAddNew'
+import ProjectCard from "./ProjectCard";
+import ProjectCardAddNew from "./ProjectCardAddNew";
 
 export default {
   name: "ProjectCardsList",
   components: {
-      ProjectCard,
-      ProjectCardAddNew
+    ProjectCard,
+    ProjectCardAddNew
   },
   props: {
     status: {
@@ -40,26 +39,30 @@ export default {
       shouldShowAddNewCard: false
     };
   },
-  created() {
-    this.projects.forEach(project => {
-      if (project.status === this.status) {
-        this.projectsList.push(project);
-      }
-    });
+  beforeMount() {
     if (this.status === 1) {
-      this.listTitle = "Done";
+      this.listTitle = "To do";
     } else if (this.status === 2) {
       this.listTitle = "In progress";
     } else if (this.status === 3) {
-      this.listTitle = "To do";
+      this.listTitle = "Done";
     }
-    this.shouldShowAddNewCard = (this.status === 3)
+    this.shouldShowAddNewCard = this.status === 1;
+  },
+  watch: {
+    projects: function(newVal, oldVal) {
+      this.projectsList = []
+      newVal.forEach(project => {
+        if (project.status === this.status) {
+          this.projectsList.push(project);
+        }
+      });
+    }
   }
 };
 </script>
 
 <style scoped>
-
 .projectsListTitle {
   color: #999999;
   font-size: 24px;
