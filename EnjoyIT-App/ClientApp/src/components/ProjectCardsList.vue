@@ -40,7 +40,7 @@ export default {
     };
   },
   beforeMount() {
-    if (this.status === 1) {
+  if (this.status === 1) {
       this.listTitle = "To do";
     } else if (this.status === 2) {
       this.listTitle = "In progress";
