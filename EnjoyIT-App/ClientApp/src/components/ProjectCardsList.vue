@@ -53,7 +53,7 @@ export default {
     } else if (this.status === 3) {
       this.listTitle = "To do";
     }
-    this.shouldShowAddNewCard = (this.status === "TODO")
+    this.shouldShowAddNewCard = (this.status === 3)
   }
 };
 </script>

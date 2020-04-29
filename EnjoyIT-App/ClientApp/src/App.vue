@@ -29,11 +29,7 @@
     };
 </script>
 
-<style>
-    .appContainer {
-            background: rgb(238, 238, 238);
-        }
-        
+<style> 
     .projectsContainer {
         display: flex;
         flex-direction: row;
