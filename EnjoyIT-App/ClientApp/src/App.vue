@@ -21,35 +21,8 @@
         },
         data: function () {
             return {
-                projects: [
-                    {
-                        id: "1",
-                        status: "IN_PROGRESS",
-                        title:
-                            "Kalendarz UEk pozwalający wyświetlić wydarzenia mające miejsce na uczelni",
-                        counter: 32
-                    },
-                    {
-                        id: "2",
-                        status: "DONE",
-                        title: "Aplikacja do zarządzania projektami studentów",
-                        counter: 12
-                    },
-                    {
-                        id: "3",
-                        status: "TODO",
-                        title: "Super sprawny system rezerwacji sal",
-                        counter: 1
-                    },
-                    {
-                        id: "4",
-                        status: "TODO",
-                        title:
-                            "Inteligentna porównywarka kursów walut, która wychwytuje i podkreśla niespodziewane skoki i spadki cen",
-                        counter: 1241
-                    }
-                ],
-                statuses: ["TODO", "IN_PROGRESS", "DONE"]
+                statuses: [1, 2, 3],
+                projects: []                   
             };
         },beforeMount (){
             service.getData().then(data => {this.projects = data})}                 
@@ -57,6 +30,10 @@
 </script>
 
 <style>
+    .appContainer {
+            background: rgb(238, 238, 238);
+        }
+        
     .projectsContainer {
         display: flex;
         flex-direction: row;
