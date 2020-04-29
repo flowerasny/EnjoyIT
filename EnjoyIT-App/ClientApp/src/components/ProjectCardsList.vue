@@ -40,7 +40,7 @@ export default {
       shouldShowAddNewCard: false
     };
   },
-  created() {
+  mounted() {
     this.projects.forEach(project => {
       if (project.status === this.status) {
         this.projectsList.push(project);

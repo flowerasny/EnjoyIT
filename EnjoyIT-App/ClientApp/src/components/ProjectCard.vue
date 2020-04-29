@@ -39,7 +39,7 @@ export default {
       cardButtonClass: "cardButton"
     };
   },
-  created() {
+  mounted() {
     this.project = {
       status: this.status,
       title: this.title,

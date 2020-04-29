@@ -24,7 +24,7 @@
                 statuses: [1, 2, 3],
                 projects: []                   
             };
-        },beforeMount (){
+        },mounted (){
             service.getData().then(data => {this.projects = data})}                 
     };
 </script>
