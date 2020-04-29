@@ -1,6 +1,7 @@
 <template>
-  <div> 
+  <div class="projectsListContainer"> 
     <span class="projectsListTitle">{{ listTitle }}</span>
+    <project-card-add-new v-if="shouldShowAddNewCard"></project-card-add-new>
     <project-card
       v-for="project in projectsList"
       :key="project.id"
@@ -14,11 +15,13 @@
 
 <script>
 import ProjectCard from './ProjectCard'
+import ProjectCardAddNew from './ProjectCardAddNew'
 
 export default {
   name: "ProjectCardsList",
   components: {
-      ProjectCard
+      ProjectCard,
+      ProjectCardAddNew
   },
   props: {
     status: {
@@ -33,7 +36,8 @@ export default {
   data() {
     return {
       listTitle: {},
-      projectsList: []
+      projectsList: [],
+      shouldShowAddNewCard: false
     };
   },
   created() {
@@ -49,6 +53,7 @@ export default {
     } else if (this.status === 3) {
       this.listTitle = "To do";
     }
+    this.shouldShowAddNewCard = (this.status === "TODO")
   }
 };
 </script>
@@ -60,5 +65,9 @@ export default {
   font-size: 24px;
   margin-left: 26px;
   font-weight: bold;
+}
+
+.projectsListContainer {
+  margin-top: 60px;
 }
 </style>
