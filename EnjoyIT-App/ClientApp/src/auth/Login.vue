@@ -1,4 +1,5 @@
 <template>
+<div id="login">
     <v-app>
         <v-dialog v-model="dialog" persistent max-width="600px" min-width="360px">
             <div>
@@ -23,7 +24,7 @@
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block :disabled="!valid" color="success" href="/projects"> Back </v-btn>
+                                            <v-btn x-large block color="success" href="/projects">Return</v-btn>
                                         </v-col>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
                                             <v-btn x-large block :disabled="!valid" color="primary" @click="validate"> Login </v-btn>
@@ -55,7 +56,7 @@
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                                            <v-btn x-large block :disabled="!valid" color="success" text>Register</v-btn>
+                                            <v-btn x-large block :disabled="!valid" color="success" @click="validate">Register</v-btn>
                                         </v-col>
                                     </v-row>
                                 </v-form>
@@ -66,11 +67,12 @@
             </div>
         </v-dialog>
     </v-app>
+    </div>
 </template>
 
 <script>
   export default {
-        name: "App",
+        name: "login",
         computed: {
         passwordMatch() {
             return () => this.password === this.verify || "Password must match";
@@ -121,6 +123,4 @@
             }
         })            
 };
-  
-
 </script>
