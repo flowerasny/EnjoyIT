@@ -1,31 +1,8 @@
 <template>
   <v-app id="app" class="appContainer">
-    <v-app-bar
-      app
-      color="primary"
-      dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-      </div>
-      <h2>Enjoy-IT</h2>
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/flowerasny/EnjoyIT"
-        target="_blank"
-        text>
-        <span class="mr-2">GITHUB PAGE</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
     
+    <Navbar></Navbar>
+
     <div class="projectsContainer">
           <project-cards-list v-for="status in statuses"
                               :key="status"
@@ -33,17 +10,23 @@
                               :projects="projects"></project-cards-list>
     </div>
 
+  <Footer></Footer>
+  
   </v-app>
 </template>
 
 <script>
     import ProjectCardsList from './components/ProjectCardsList'
     import service from '@/helpers/service'
-    
+    import Footer from '@/components/Footer'
+    import Navbar from '@/components/Navbar'
+
     export default {
         name: "App",
         components: {
-            ProjectCardsList
+            ProjectCardsList,
+            Footer,
+            Navbar
         },
         data: function () {
             return {
@@ -57,9 +40,11 @@
 </script>
 
 <style> 
-    .projectsContainer {
-        margin-top: 50px;
+    .projectsContainer {     
+        background: rgb(240, 240, 240);
+        font-family: sans-serif;
         display: flex;
+        padding: 50px;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
