@@ -1,9 +1,9 @@
 <template>
-  <div class="card"@click.stop="showScheduleForm=true">
-      <Popup v-model="showScheduleForm"></Popup>
+  <div class="card" @click.stop="showScheduleForm=true">
+    <Popup v-model="showScheduleForm"></Popup>
     <div class="statusBar"></div>
     <span class="cardTitle">Add new project</span>
-    <img class="addNewIcon" src="../assets/ic_plus.png" /> 
+    <img class="addNewIcon" src="../assets/ic_plus.png" />
   </div>
 </template>
 
@@ -11,10 +11,10 @@
 import Popup from "./Popup";
 
 export default {
-  data () {
+  data() {
     return {
       showScheduleForm: false
-    }
+    };
   },
   name: "ProjectCard",
   components: { Popup }
