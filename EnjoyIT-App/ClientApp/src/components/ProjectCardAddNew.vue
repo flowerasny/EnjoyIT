@@ -1,14 +1,23 @@
 <template>
-  <div class="card">
+  <div class="card"@click.stop="showScheduleForm=true">
+      <Popup v-model="showScheduleForm"></Popup>
     <div class="statusBar"></div>
     <span class="cardTitle">Add new project</span>
-    <img class="addNewIcon" src="../assets/ic_plus.png"/>
+    <img class="addNewIcon" src="../assets/ic_plus.png" /> 
   </div>
 </template>
 
 <script>
+import Popup from "./Popup";
+
 export default {
-  name: "ProjectCard"
+  data () {
+    return {
+      showScheduleForm: false
+    }
+  },
+  name: "ProjectCard",
+  components: { Popup }
 };
 </script>
 
@@ -52,5 +61,4 @@ export default {
   width: 32px;
   align-self: center;
 }
-
 </style>

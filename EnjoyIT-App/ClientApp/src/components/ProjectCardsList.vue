@@ -69,6 +69,6 @@ export default {
 }
 
 .projectsListContainer {
-  margin-top: 60px;
+  margin-top: 20px;
 }
 </style>
