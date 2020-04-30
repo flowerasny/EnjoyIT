@@ -5,10 +5,8 @@
     <project-card
       v-for="project in projectsList"
       :key="project.id"
-      :status="project.status"
-      :title="project.title"
-      :rate="project.rate"
-    ></project-card>
+      :data="project">
+      </project-card>
   </div>
 </template>
 

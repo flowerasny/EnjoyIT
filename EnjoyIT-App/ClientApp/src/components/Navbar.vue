@@ -27,14 +27,6 @@
   <v-parallax
     dark
     src="../assets/navbar.jpg">
-    <!--<v-row
-      align="center"
-      justify="center">
-      <v-col class="text-center" cols="12">
-        <h1 class="display-1 font-weight-thin mb-4">EnjoyIT</h1>
-        <h4 class="subheading">Create your project today!</h4>
-      </v-col>
-    </v-row>-->
   </v-parallax>
   </div>
 </template>

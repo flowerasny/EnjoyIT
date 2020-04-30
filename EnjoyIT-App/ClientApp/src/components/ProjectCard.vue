@@ -2,7 +2,7 @@
   <div class="card">
     <div v-bind:class="[statusBarClass, statusClass]"></div>
     <span class="cardTitle">{{project.title}}</span>
-    <div class="rateContainer">
+    <div class="rateContainer" v-on:click="increment">
       <img src="../assets/ic_like.png" class="rateImage" />
       <span class="ratesCounter">{{project.rate}}</span>
     </div>
@@ -15,42 +15,43 @@
 </template>
 
 <script>
+import service from '@/helpers/service'
+
 export default {
   name: "ProjectCard",
   props: {
-    status: {
-      type: Number,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    rate: {
-      type: Number,
-      required: true
-    }
+    data:null
   },
   data() {
     return {
-      project: {},
+      project: this.data,
       statusClass: {},
       statusBarClass: "statusBar",
       cardButtonClass: "cardButton"
     };
   },
+  methods: {
+      increment: function (event) {
+
+          var obj = {
+          'id': this.project.id,
+          'title': this.project.title,
+          'orginator': this.project.orginator,
+          'description':this.project.description,
+          'githubPage': this.project.githubPage,
+          'solutionPage': this.project.solutionPage,
+          'status': this.project.status,
+          'rate': this.project.rate += 1}
+
+          service.increment(this.project.id, obj).then(data => {console.log(data)})}   
+  },
   mounted() {
-    this.project = {
-      status: this.status,
-      title: this.title,
-      rate: this.rate
-    };
     
-    if (this.status === 3) 
+    if (this.project.status === 3) 
       this.statusClass = "statusDone";
-    else if (this.status === 2) 
+    else if (this.project.status === 2) 
       this.statusClass = "statusInProgress";
-    else if (this.status === 1) 
+    else if (this.project.status === 1) 
       this.statusClass = "statusTodo";
   }
 };
@@ -122,7 +123,7 @@ export default {
 
 .cardButtonText {
   color: #ffffff;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .statusDone {
