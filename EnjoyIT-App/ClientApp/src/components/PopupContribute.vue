@@ -73,7 +73,7 @@ export default {
     errorMessages: "",
     formHasErrors: false,
     repoValid: true,
-    githubPage: null
+    githubPage: ""
   }),
   methods: {
     submitForm() {

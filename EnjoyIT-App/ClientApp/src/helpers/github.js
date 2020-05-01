@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default {
     async isGithubRepositoryValid(link) {
-        if (link.includes("https://github.com/")) {
+        if (link.startsWith("https://github.com/")) {
             return axios.get(`https://api.github.com/repos/${link.split("/")[3]}/${link.split("/")[4]}`)
                 .then(response => {
                     return true
