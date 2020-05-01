@@ -1,5 +1,6 @@
 <template>
-  <div class="card">
+  <div class="card" @click.stop="showPopup">
+    <popup-contribute v-model="popupContributeModel"></popup-contribute>
     <div v-bind:class="[statusBarClass, statusClass]"></div>
     <span class="cardTitle">{{project.title}}</span>
     <div class="rateContainer" v-on:click="increment">
@@ -15,44 +16,54 @@
 </template>
 
 <script>
-import service from '@/helpers/service'
+import service from "@/helpers/service";
+import PopupContribute from "./PopupContribute";
 
 export default {
   name: "ProjectCard",
+  components: { PopupContribute },
   props: {
-    data:null
+    data: null
   },
   data() {
     return {
       project: this.data,
       statusClass: {},
       statusBarClass: "statusBar",
-      cardButtonClass: "cardButton"
+      cardButtonClass: "cardButton",
+      popupContributeModel: {
+        shouldShow: false,
+        data: this.data
+      },
     };
   },
   methods: {
-      increment: function (event) {
+    increment: function(event) {
+      var obj = {
+        id: this.project.id,
+        title: this.project.title,
+        orginator: this.project.orginator,
+        description: this.project.description,
+        githubPage: this.project.githubPage,
+        solutionPage: this.project.solutionPage,
+        status: this.project.status,
+        rate: (this.project.rate += 1)
+      };
 
-          var obj = {
-          'id': this.project.id,
-          'title': this.project.title,
-          'orginator': this.project.orginator,
-          'description':this.project.description,
-          'githubPage': this.project.githubPage,
-          'solutionPage': this.project.solutionPage,
-          'status': this.project.status,
-          'rate': this.project.rate += 1}
-
-          service.increment(this.project.id, obj).then(data => {console.log(data)})}   
+      service.increment(this.project.id, obj).then(data => {
+        console.log(data);
+      });
+    },
+    showPopup: function(){
+      if(this.project.status == "1"){
+        this.popupContributeModel.shouldShow = true
+      }
+    }
   },
   mounted() {
-    
-    if (this.project.status === 3) 
-      this.statusClass = "statusDone";
-    else if (this.project.status === 2) 
-      this.statusClass = "statusInProgress";
-    else if (this.project.status === 1) 
-      this.statusClass = "statusTodo";
+    if (this.project.status === 3) this.statusClass = "statusDone";
+    else if (this.project.status === 2) this.statusClass = "statusInProgress";
+    else if (this.project.status === 1) this.statusClass = "statusTodo";
   }
 };
 </script>
