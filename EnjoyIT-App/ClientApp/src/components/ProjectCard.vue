@@ -1,6 +1,7 @@
 <template>
   <div class="card" @click.stop="showPopup">
     <popup-contribute v-model="popupContributeModel"></popup-contribute>
+    <popup-show-details v-model="popupShowDetailsModel"></popup-show-details>
     <div v-bind:class="[statusBarClass, statusClass]"></div>
     <span class="cardTitle">{{project.title}}</span>
     <div class="rateContainer" v-on:click="increment">
@@ -18,10 +19,11 @@
 <script>
 import service from "@/helpers/service";
 import PopupContribute from "./PopupContribute";
+import PopupShowDetails from "./PopupShowDetails";
 
 export default {
   name: "ProjectCard",
-  components: { PopupContribute },
+  components: { PopupContribute, PopupShowDetails },
   props: {
     data: null
   },
@@ -35,6 +37,10 @@ export default {
         shouldShow: false,
         data: this.data
       },
+      popupShowDetailsModel: {
+        shouldShow: false,
+        data: this.data
+      }
     };
   },
   methods: {
@@ -54,9 +60,11 @@ export default {
         console.log(data);
       });
     },
-    showPopup: function(){
-      if(this.project.status == "1"){
-        this.popupContributeModel.shouldShow = true
+    showPopup: function() {
+      if (this.project.status === 1) {
+        this.popupContributeModel.shouldShow = true;
+      } else if (this.project.status === 2) {
+        this.popupShowDetailsModel.shouldShow = true;
       }
     }
   },
