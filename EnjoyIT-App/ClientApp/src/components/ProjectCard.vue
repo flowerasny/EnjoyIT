@@ -65,6 +65,8 @@ export default {
         this.popupContributeModel.shouldShow = true;
       } else if (this.project.status === 2) {
         this.popupShowDetailsModel.shouldShow = true;
+      } else if (this.project.status === 3 ){
+        window.open(this.project.solutionPage)
       }
     }
   },
