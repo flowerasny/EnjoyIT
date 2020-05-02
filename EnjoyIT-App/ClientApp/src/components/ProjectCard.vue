@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import service from "@/helpers/service";
+import Service from "@/helpers/service";
 import PopupContribute from "./PopupContribute";
 import PopupShowDetails from "./PopupShowDetails";
 
@@ -56,7 +56,7 @@ export default {
         rate: (this.project.rate += 1)
       };
 
-      service.increment(this.project.id, obj).then(data => {
+      Service.increment(this.project.id, obj).then(data => {
         console.log(data);
       });
     },

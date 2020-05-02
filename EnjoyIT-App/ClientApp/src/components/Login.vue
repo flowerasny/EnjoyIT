@@ -24,7 +24,7 @@
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block color="success" href="/projects">Return</v-btn>
+                                            <v-btn x-large block color="success" to="/projects">Return</v-btn>
                                         </v-col>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
                                             <v-btn x-large block :disabled="!valid" color="primary" @click="validate"> Login </v-btn>
@@ -55,7 +55,7 @@
                                             <v-text-field block v-model="verify" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.required, passwordMatch]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Confirm Password" counter @click:append="show1 = !show1"></v-text-field>
                                         </v-col>
                                         <v-spacer></v-spacer>
-                                        <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
+                                        <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
                                             <v-btn x-large block :disabled="!valid" color="success" @click="validate">Register</v-btn>
                                         </v-col>
                                     </v-row>

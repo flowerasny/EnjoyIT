@@ -1,28 +1,19 @@
-<template>
-  <v-app>
-    
-    <Navbar></Navbar>
-
+<template> 
     <div class="projectsContainer">
           <project-cards-list v-for="status in statuses"
                               :key="status"
                               :status="status"
                               :projects="projects"></project-cards-list>
     </div>
-
-    <Footer></Footer>
-  
-  </v-app>
 </template>
 
 <script>
     import ProjectCardsList from './ProjectCardsList'
-    import service from '../helpers/service'
+    import Service from '../helpers/service'
     import Footer from './Footer'
     import Navbar from './Navbar'
 
     export default {
-        name: "App",
         components: {
             ProjectCardsList,
             Footer,
@@ -35,13 +26,12 @@
             };
         },
         beforeMount (){
-            service.getData().then(data => {this.projects = data})}                 
+            Service.getData().then(data => {this.projects = data})}                 
     };
 </script>
 
 <style> 
     .projectsContainer {     
-        background: rgb(240, 240, 240);
         font-family: sans-serif;
         display: flex;
         padding: 50px;
