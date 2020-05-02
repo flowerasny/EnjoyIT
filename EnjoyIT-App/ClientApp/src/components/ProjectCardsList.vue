@@ -1,6 +1,6 @@
 <template>
   <div class="projectsListContainer">
-        <div v-bind:class="[cardButtonClass,statusClass]">
+    <div>
       <span v-if="status === 3"><img src="../assets/done.png" class="icon"></span>
       <span v-else-if="status === 2"><img src="../assets/inprogress.png" class="icon"></span>
       <span v-else-if="status === 1"><img src="../assets/todo.png" class="icon"></span>
