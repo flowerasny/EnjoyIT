@@ -36,6 +36,12 @@ export default {
   border-radius: 8px;
 }
 
+.card:hover {
+  background: rgba(0,191,255, 0.1);
+  transition-delay:0.1s;
+  cursor: pointer;
+}
+
 .cardTitle {
   font-size: 16px;
   color: #333333;

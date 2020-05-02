@@ -1,6 +1,10 @@
 <template>
   <div class="projectsListContainer">
-    <span class="projectsListTitle">{{ listTitle }}</span>
+        <div v-bind:class="[cardButtonClass,statusClass]">
+      <span v-if="status === 3"><img src="../assets/done.png" class="icon"></span>
+      <span v-else-if="status === 2"><img src="../assets/inprogress.png" class="icon"></span>
+      <span v-else-if="status === 1"><img src="../assets/todo.png" class="icon"></span>
+    </div>
     <project-card-add-new v-if="shouldShowAddNewCard"></project-card-add-new>
     <project-card
       v-for="project in projectsList"
@@ -15,7 +19,6 @@ import ProjectCard from "./ProjectCard";
 import ProjectCardAddNew from "./ProjectCardAddNew";
 
 export default {
-  name: "ProjectCardsList",
   components: {
     ProjectCard,
     ProjectCardAddNew
@@ -32,19 +35,11 @@ export default {
   },
   data() {
     return {
-      listTitle: {},
       projectsList: [],
       shouldShowAddNewCard: false
     };
   },
   beforeMount() {
-  if (this.status === 1) {
-      this.listTitle = "To do";
-    } else if (this.status === 2) {
-      this.listTitle = "In progress";
-    } else if (this.status === 3) {
-      this.listTitle = "Done";
-    }
     this.shouldShowAddNewCard = this.status === 1;
   },
   watch: {
@@ -70,5 +65,12 @@ export default {
 
 .projectsListContainer {
   margin-top: 20px;
+}
+.icon {
+  display: flex;
+  height: 200px;
+  width: 200px;
+  margin-left: 70px;
+  align-self: center;
 }
 </style>

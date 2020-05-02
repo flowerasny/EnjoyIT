@@ -22,7 +22,6 @@ import PopupContribute from "./PopupContribute";
 import PopupShowDetails from "./PopupShowDetails";
 
 export default {
-  name: "ProjectCard",
   components: { PopupContribute, PopupShowDetails },
   props: {
     data: null
@@ -81,7 +80,7 @@ export default {
   position: relative;
   display: flex;
   background: #ffffff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 10px 20px 0 rgba(0, 0, 0, 0.5);
   padding-left: 16px;
   padding-right: 12x;
   padding-top: 16px;
@@ -89,6 +88,11 @@ export default {
   margin-top: 20px;
   width: 350px;
   border-radius: 8px;
+}
+.card:hover {
+  background: rgba(0,191,255, 0.1);
+  transition-delay:0.1s;
+  cursor: pointer;
 }
 
 .cardTitle {
