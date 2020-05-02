@@ -43,6 +43,7 @@
 
 <script>
 import github from "../helpers/github";
+import Service from '../helpers/service'
 
 export default {
   props: {
@@ -87,9 +88,20 @@ export default {
           });
 
           if (!this.formHasErrors) {
-            console.log(
-              `${this.project.id} ${this.githubPage}`
-            );
+ 
+            var obj = {
+              id: this.project.id,
+              title: this.project.title,
+              orginator: this.project.orginator,
+              description: this.project.description,
+              githubPage: this.githubPage,
+              solutionPage: this.project.solutionPage,
+              status: 2,
+              rate: this.project.rate
+            };
+
+            Service.edit(this.project.id, obj).then(data => { console.log(data);});
+
             this.resetForm();
             this.closePopup();
           }

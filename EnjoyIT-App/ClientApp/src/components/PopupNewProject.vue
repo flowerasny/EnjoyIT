@@ -63,6 +63,9 @@
 </template>
 
 <script>
+
+import Service from '../helpers/service'
+
 export default {
   props: {
     value: Boolean
@@ -103,9 +106,18 @@ export default {
       });
 
       if (!this.formHasErrors) {
-        console.log(
-          `${this.name} ${this.surname} ${this.projectTitle} ${this.projectDescription}`
-        );
+
+        var obj = {
+          title: this.projectTitle,
+          orginator: this.name + ' ' + this.surname,
+          description: this.projectDescription,
+          githubPage: '',
+          solutionPage: '',
+          status: 1,
+          rate: 0
+        };
+
+        Service.add(obj).then(data => { console.log(data);});
         this.resetForm()
         this.closePopup()
       }

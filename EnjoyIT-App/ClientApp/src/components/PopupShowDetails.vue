@@ -55,7 +55,7 @@
 
 <script>
 import github from "../helpers/github";
-
+import Service from "../helpers/service"
 export default {
   props: {
     value: Object
@@ -107,7 +107,20 @@ export default {
         });
 
         if (!this.formHasErrors) {
-          console.log(`${this.project.id} ${this.projectPage}`);
+          
+          var obj = {
+            id: this.project.id,
+            title: this.project.title,
+            orginator: this.project.orginator,
+            description: this.project.description,
+            githubPage: this.project.githubPage,
+            solutionPage: this.projectPage,
+            status: 3,
+            rate: this.project.rate
+          };
+
+          Service.edit(this.project.id, obj).then(data => {console.log(data);});
+
           this.resetForm();
           this.closePopup();
         }

@@ -56,7 +56,7 @@ export default {
         rate: (this.project.rate += 1)
       };
 
-      Service.increment(this.project.id, obj).then(data => {
+      Service.edit(this.project.id, obj).then(data => {
         console.log(data);
       });
     },
