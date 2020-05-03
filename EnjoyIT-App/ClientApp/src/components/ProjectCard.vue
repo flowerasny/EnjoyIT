@@ -44,6 +44,7 @@ export default {
   },
   methods: {
     increment: function(event) {
+      event.stopPropagation()
       var obj = {
         id: this.project.id,
         title: this.project.title,
@@ -54,12 +55,11 @@ export default {
         status: this.project.status,
         rate: (this.project.rate += 1)
       };
-
       Service.edit(this.project.id, obj).then(data => {
         console.log(data);
       });
     },
-    showPopup: function() {
+    showPopup: function(event) {
       if (this.project.status === 1) {
         this.popupContributeModel.shouldShow = true;
       } else if (this.project.status === 2) {
@@ -89,6 +89,7 @@ export default {
   width: 350px;
   border-radius: 8px;
 }
+
 .card:hover {
   background: rgba(0,191,255, 0.1);
   transition-delay:0.1s;
