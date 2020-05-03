@@ -43,7 +43,7 @@ export default {
     };
   },
   methods: {
-    increment: function(event) {
+    increment: async function(event) {
       event.stopPropagation()
       var obj = {
         id: this.project.id,
@@ -55,9 +55,8 @@ export default {
         status: this.project.status,
         rate: (this.project.rate += 1)
       };
-      Service.edit(this.project.id, obj).then(data => {
-        console.log(data);
-      });
+      await Service.edit(this.project.id, obj).then();
+      this.$parent.projectStateChanged();
     },
     showPopup: function(event) {
       if (this.project.status === 1) {
@@ -65,6 +64,9 @@ export default {
       } else if (this.project.status === 2) {
         this.popupShowDetailsModel.shouldShow = true;
       }
+    },
+    projectStateChanged: function(){
+      this.$parent.projectStateChanged()
     }
   },
   mounted() {

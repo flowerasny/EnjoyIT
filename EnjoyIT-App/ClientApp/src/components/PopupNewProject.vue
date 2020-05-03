@@ -97,7 +97,7 @@ export default {
     projectDescription: null
   }),
   methods: {
-    submitForm() {
+    async submitForm() {
       this.formHasErrors = false;
 
       Object.keys(this.form).forEach(f => {
@@ -117,9 +117,10 @@ export default {
           rate: 0
         };
 
-        Service.add(obj).then(data => { console.log(data);});
+        await Service.add(obj);
         this.resetForm()
         this.closePopup()
+        this.$parent.addedNewProject()
       }
     },
     closePopup() {

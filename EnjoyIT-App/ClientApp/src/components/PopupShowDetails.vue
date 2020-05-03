@@ -92,12 +92,12 @@ export default {
     projectPage: ""
   }),
   mounted() {
-    // github
-    //   .getContributors(this.project.githubPage)
-    //   .then(result => this.contributors = result);
+    github
+      .getContributors(this.project.githubPage)
+      .then(result => this.contributors = result);
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       if (github.validateURL(this.projectPage)) {
         this.formHasErrors = false;
 
@@ -119,10 +119,11 @@ export default {
             rate: this.project.rate
           };
 
-          Service.edit(this.project.id, obj).then(data => {console.log(data);});
+          await Service.edit(this.project.id, obj).then(data => {console.log(data);});
 
           this.resetForm();
           this.closePopup();
+          this.$parent.projectStateChanged();
         }
       } else {
         this.urlValid = false;

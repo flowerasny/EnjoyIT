@@ -33,6 +33,11 @@ export default {
       required: true
     }
   },
+  methods: {
+    projectStateChanged: function(){
+      this.$parent.refreshLists()
+    }
+  },
   data() {
     return {
       projectsList: [],

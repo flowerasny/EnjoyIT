@@ -17,7 +17,12 @@ export default {
     };
   },
   name: "ProjectCard",
-  components: { PopupNewProject }
+  components: { PopupNewProject },
+  methods: {
+    addedNewProject: function() {
+      this.$parent.projectStateChanged();
+    }
+  }
 };
 </script>
 
@@ -37,8 +42,8 @@ export default {
 }
 
 .card:hover {
-  background: rgba(0,191,255, 0.1);
-  transition-delay:0.1s;
+  background: rgba(0, 191, 255, 0.1);
+  transition-delay: 0.1s;
   cursor: pointer;
 }
 
