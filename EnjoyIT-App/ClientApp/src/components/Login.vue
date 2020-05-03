@@ -23,9 +23,6 @@
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block color="success" to="/home">Return</v-btn>
-                                        </v-col>
-                                        <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
                                             <v-btn x-large block :disabled="!valid" color="primary" @click="validate"> Login </v-btn>
                                         </v-col>
                                     </v-row>
@@ -91,7 +88,7 @@
                             };
 
                             localStorage.setItem("user", JSON.stringify(obj)); 
-                            this.$router.go('home');
+                            this.$router.go('projects');
                             
                          })
                         .catch(error => {console.log('User not found') });
@@ -118,7 +115,7 @@
             if (obj != null)
             {
                 this.dialog = false;                           
-                this.$router.push('home');
+                this.$router.push('projects');
             } 
         },
         data: () => ({
