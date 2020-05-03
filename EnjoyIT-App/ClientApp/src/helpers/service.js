@@ -13,5 +13,14 @@ export default {
     add(content) {
         return axios.post('/api/data', content)
             .then(response => { return response.data })
+    },
+    addUser(content) {
+        return axios.post('/api/user', content)
+            .then(response => { return response.data })
+    },
+    validateUser(email, password) {
+        let url = '/api/user?email=' + email + '&password=' + password
+        return axios.get(url)
+            .then(response => { return response.data })
     }
 }

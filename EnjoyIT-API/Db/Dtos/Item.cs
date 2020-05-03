@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataContext.Dtos
+namespace API.Db.Dtos
 {
     [Table("Items")]
     public class Item

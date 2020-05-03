@@ -1,4 +1,4 @@
-﻿using DataContext.Dtos;
+﻿using API.Db.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataContext
@@ -8,6 +8,8 @@ namespace DataContext
         public DataBaseContext(DbContextOptions options) : base(options){ }
 
         public DbSet<Item> Items { get; set; }
+
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

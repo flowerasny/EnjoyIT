@@ -32,6 +32,7 @@
                 v-for="(item, index) in menuItems"
                 :key="index"
                 :to="item.path"
+                v-show="item.show"
               >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
@@ -44,7 +45,8 @@
           text
           v-for="item in menuItems"
           :key="item.title"
-          :to="item.path">
+          :to="item.path"
+           v-show="item.show">
           <v-icon left dark>{{ item.icon }}</v-icon>
           {{ item.title }}
        </v-btn>
@@ -55,6 +57,7 @@
         <span class="mr-2">GITHUB PAGE</span>
         <v-icon>mdi-open-in-new</v-icon>
        </v-btn>
+       
       </div>
     </v-app-bar>
   <v-parallax
@@ -68,21 +71,33 @@
 </template>
 
 <script>
-
 export default {
-  name: "App",
   data(){
     return {
       appTitle: 'Enjoy-IT',
       sidebar: false,
-      menuItems: [
-          { title: 'HOME', path: '/home', icon: 'info' },
-          { title: 'PROJECTS', path: '/projects', icon: 'card_travel' },
-          { title: 'LOGIN', path: '/login', icon: 'account_circle' },
-          { title: 'ABOUT US', path: '/aboutUs', icon: 'info' }
-          
-     ]
+      authorized: false,
+      menuItems:[],
+      loggedName:''
     }
+  },
+  mounted(){     
+    this.menuItems = [
+          { title: 'HOME', path: '/home', icon: 'home', show: true },
+          { title: 'PROJECTS', path: '/projects', icon: 'card_travel', show: this.authorized },
+          { title: 'LOGIN', path: '/login', icon: 'account_circle', show: !this.authorized },
+          { title: 'ABOUT US', path: '/aboutUs', icon: 'info', show: true}        
+     ]
+
+  },        
+  beforeMount (){
+    let obj = JSON.parse(localStorage.getItem("user"));
+
+    if (obj != null)
+    {
+      this.loggedName = obj.name
+      this.authorized = true;
+    } 
   },
 };
 </script>

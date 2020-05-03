@@ -96,7 +96,7 @@ export default {
 }
 
 .cardTitle {
-  font-size: 16px;
+  font-size: 18px;
   color: #333333;
   padding-left: 20px;
   padding-top: 8px;

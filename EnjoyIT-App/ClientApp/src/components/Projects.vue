@@ -22,11 +22,22 @@
         data: function () {
             return {
                 statuses: [1, 2, 3],
-                projects: []                   
+                projects: [],                
             };
         },
         beforeMount (){
-            Service.getData().then(data => {this.projects = data})}                 
+            let obj = JSON.parse(localStorage.getItem("user"));
+
+            if (obj != null)
+            {
+                Service.getData().then(data => {this.projects = data})                      
+                
+            }
+            else
+            {
+                this.$router.push('login');
+            }          
+        }                 
     };
 </script>
 

@@ -1,7 +1,6 @@
 <template>
-<div id="login">
-    <v-app>
-        <v-dialog v-model="dialog" persistent max-width="600px" min-width="360px">
+    <div id="login">
+        <v-dialog v-model="dialog" persistent max-width="600px" min-width="400px">
             <div>
                 <v-tabs v-model="tab" show-arrows background-color="primary" icons-and-text dark grow>
                     <v-tabs-slider color="primary"></v-tabs-slider>
@@ -24,7 +23,7 @@
                                         </v-col>
                                         <v-spacer></v-spacer>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                                            <v-btn x-large block color="success" to="/projects">Return</v-btn>
+                                            <v-btn x-large block color="success" to="/home">Return</v-btn>
                                         </v-col>
                                         <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
                                             <v-btn x-large block :disabled="!valid" color="primary" @click="validate"> Login </v-btn>
@@ -66,30 +65,61 @@
                 </v-tabs>
             </div>
         </v-dialog>
-    </v-app>
     </div>
 </template>
 
 <script>
+  import Service from '../helpers/service'
   export default {
         name: "login",
         computed: {
-        passwordMatch() {
-            return () => this.password === this.verify || "Password must match";
-        }
+            passwordMatch() {
+                return () => this.password === this.verify || "Password must match";
+            }
         },
         methods: {
             validate() {
-            if (this.$refs.loginForm.validate()) {
-                // submit form to server/API here...
+                if (this.$refs.loginForm.validate() && this.tab == 0) {
+                    
+                    Service.validateUser(this.loginEmail, this.loginPassword)
+                        .then(data => { 
+
+                            let obj = {
+                                id: data.id,
+                                name: data.firstName + ' ' + data.lastName,
+                                email: data.email
+                            };
+
+                            localStorage.setItem("user", JSON.stringify(obj)); 
+                            this.$router.go('home');
+                            
+                         })
+                        .catch(error => {console.log('User not found') });
+                
+                }
+                else if (this.$refs.registerForm.validate() && this.tab == 1)
+                {
+                    var obj = {
+                        firstName: this.firstName,
+                        lastName: this.lastName,
+                        email: this.email,
+                        password: this.password
+                    };
+
+                    Service.addUser(obj)
+                     .then(data => {this.$router.go('login')})
+                     .catch(error => {console.log('Cannot register') });;
+                }
             }
-            },
-            reset() {
-            this.$refs.form.reset();
-            },
-            resetValidation() {
-            this.$refs.form.resetValidation();
-            }
+        },   
+         beforeMount (){
+            let obj = JSON.parse(localStorage.getItem("user"));
+
+            if (obj != null)
+            {
+                this.dialog = false;                           
+                this.$router.push('home');
+            } 
         },
         data: () => ({
             dialog: true,
@@ -108,18 +138,17 @@
             loginPassword: "",
             loginEmail: "",
             loginEmailRules: [
-            v => !!v || "Required",
-            v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+                v => !!v || "Required",
+                v => /.+@.+\..+/.test(v) || "E-mail must be valid"
             ],
             emailRules: [
-            v => !!v || "Required",
-            v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+                v => !!v || "Required",
+                v => /.+@.+\..+/.test(v) || "E-mail must be valid"
             ],
-
             show1: false,
             rules: {
-            required: value => !!value || "Required.",
-            min: v => (v && v.length >= 8) || "Min 8 characters"
+                required: value => !!value || "Required.",
+                min: v => (v && v.length >= 8) || "Min 8 characters"
             }
         })            
 };

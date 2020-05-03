@@ -10,29 +10,25 @@ using API.Db.Dtos;
 namespace API.Controllers
 {
     [EnableCors("CorsPolicy")]
-    [Route("api/data")]
+    [Route("api/user")]
     [ApiController]
-    public class ItemsController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly DataBaseContext _context;
 
-        public ItemsController(DataBaseContext context)
+        public UsersController(DataBaseContext context)
         {
             _context = context;
         }
 
-        // GET: api/Items
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItems()
+        // GET: api/user?email=...&password=...
+        [HttpGet("")]
+        public async Task<ActionResult<User>> GetItem(string email, string password)
         {
-            return await _context.Items.ToListAsync();
-        }
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password)) 
+                return NotFound();
 
-        // GET: api/Items/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Item>> GetItem(int id)
-        {
-            var item = await _context.Items.FindAsync(id);
+            var item = await _context.Users.Where(x => x.email == email && x.password == password).FirstOrDefaultAsync();
 
             if (item == null)
             {
@@ -42,9 +38,23 @@ namespace API.Controllers
             return item;
         }
 
-        // PUT: api/Items/5
+        // GET: api/user
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetItem(int id)
+        {
+            var item = await _context.Users.FindAsync(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return item;
+        }
+
+        // PUT: api/user/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutItem(int id, Item item)
+        public async Task<IActionResult> PutItem(int id, User item)
         {
             if (id != item.Id)
             {
@@ -72,27 +82,27 @@ namespace API.Controllers
             return NoContent();
         }
 
-        // POST: api/Items
+        // POST: api/user
         [HttpPost]
-        public async Task<ActionResult<Item>> PostItem(Item item)
+        public async Task<ActionResult<User>> PostItem(User item)
         {
-            _context.Items.Add(item);
+            _context.Users.Add(item);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetItem", new { id = item.Id }, item);
         }
 
-        // DELETE: api/Items/5
+        // DELETE: api/user/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Item>> DeleteItem(int id)
+        public async Task<ActionResult<User>> DeleteItem(int id)
         {
-            var item = await _context.Items.FindAsync(id);
+            var item = await _context.Users.FindAsync(id);
             if (item == null)
             {
                 return NotFound();
             }
 
-            _context.Items.Remove(item);
+            _context.Users.Remove(item);
             await _context.SaveChangesAsync();
 
             return item;
@@ -100,7 +110,7 @@ namespace API.Controllers
 
         private bool ItemExists(int id)
         {
-            return _context.Items.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }
