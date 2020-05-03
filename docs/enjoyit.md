@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+
+[Link to aplikacji](http://51.68.142.66:5050/login)
+
 [Repozytorium projektu](https://github.com/flowerasny/EnjoyIT)
 
 [Repozytorium witryny](https://github.com/jmaka96/jmaka96.github.io)
