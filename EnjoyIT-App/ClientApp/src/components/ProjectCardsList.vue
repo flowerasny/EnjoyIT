@@ -50,6 +50,7 @@ export default {
           this.projectsList.push(project);
         }
       });
+      this.projectsList.sort((a, b) => b.rate - a.rate)
     }
   }
 };
